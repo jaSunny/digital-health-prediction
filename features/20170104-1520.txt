@@ -1,0 +1,73 @@
+Call:
+NULL
+
+Deviance Residuals:
+    Min       1Q   Median       3Q      Max
+-1.3257  -0.8412  -0.7843   1.4323   2.1724
+
+Coefficients: (1 not defined because of singularities)
+                             Estimate Std. Error z value Pr(>|z|)
+(Intercept)                 -0.919112   0.010014 -91.781  < 2e-16 ***
+FEATURE_GENDER               0.009278   0.009968   0.931  0.35199
+FEATURE_BIRTH_DATE           0.058534   0.799023   0.073  0.94160
+FEATURE_BIRTH_YEAR          -0.008120   0.798869  -0.010  0.99189
+FEATURE_AGE                        NA         NA      NA       NA
+FEATURE_HEIGHT              -0.015968   0.016748  -0.953  0.34038
+FEATURE_ZIP                  0.008681   0.009939   0.873  0.38244
+FEATURE_SMOKING_PACKS_A_DAY  0.153194   0.010933  14.012  < 2e-16 ***
+FEATURE_ACTIVITY_LEVEL      -0.173133   0.013287 -13.031  < 2e-16 ***
+FEATURE_BLOOD_TYPE          -0.002672   0.009945  -0.269  0.78816
+FEATURE_AVG_SLEEP_TIME      -0.033287   0.026163  -1.272  0.20326
+FEATURE_COMMUTING_DISTANCE  -0.006135   0.014446  -0.425  0.67104
+FEATURE_DRINKS_ALCOHOL       0.129583   0.012092  10.716  < 2e-16 ***
+FEATURE_BMI                  0.040411   0.013190   3.064  0.00219 **
+FEATURE_SLEEP_BY_AGE         0.014384   0.017461   0.824  0.41004
+FEATURE_BMI_SMOKING_BY_AGE   0.002102   0.016855   0.125  0.90077
+FEATURE_COMMUTING_DRUNK_AGE -0.003028   0.011400  -0.266  0.79050
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 60059  on 49999  degrees of freedom
+Residual deviance: 59372  on 49984  degrees of freedom
+AIC: 59404
+
+Number of Fisher Scoring iterations: 4
+
+>
+> pred <- predict(glm_fit, newdata=validation_sample)
+Warning message:
+In predict.lm(object, newdata, se.fit, scale = 1, type = ifelse(type ==  :
+  Vorhersage durch Fit ohne vollen Rang mag täuschen
+> misClasificError <- mean(pred != validation_sample$SICK)
+> print(paste('Accuracy',1-misClasificError))
+[1] "Accuracy 0.71038"
+>
+>
+> glm.fitted <- fitted(glm_fit)
+> #print(glm.fitted)
+>
+> library(mlbench)
+> # estimate variable importance
+> importance <- varImp(glm_fit, scale=FALSE)
+> # summarize importance
+> print(importance)
+glm variable importance
+
+                             Overall
+FEATURE_SMOKING_PACKS_A_DAY 14.01153
+FEATURE_ACTIVITY_LEVEL      13.03063
+FEATURE_DRINKS_ALCOHOL      10.71622
+FEATURE_BMI                  3.06374
+FEATURE_AVG_SLEEP_TIME       1.27231
+FEATURE_HEIGHT               0.95341
+FEATURE_GENDER               0.93074
+FEATURE_ZIP                  0.87340
+FEATURE_SLEEP_BY_AGE         0.82382
+FEATURE_COMMUTING_DISTANCE   0.42472
+FEATURE_BLOOD_TYPE           0.26870
+FEATURE_COMMUTING_DRUNK_AGE  0.26566
+FEATURE_BMI_SMOKING_BY_AGE   0.12468
+FEATURE_BIRTH_DATE           0.07326
+FEATURE_BIRTH_YEAR           0.01016

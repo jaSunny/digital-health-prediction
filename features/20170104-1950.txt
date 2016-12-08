@@ -1,0 +1,87 @@
+Call:
+NULL
+
+Deviance Residuals:
+    Min       1Q   Median       3Q      Max
+-1.4418  -0.8369  -0.7807   1.4422   2.2872
+
+Coefficients: (3 not defined because of singularities)
+                                           Estimate Std. Error  z value Pr(>|z|)
+(Intercept)                               -0.934350   0.003176 -294.187  < 2e-16 ***
+FEATURE_GENDER                             0.004408   0.003161    1.395 0.163160
+FEATURE_BIRTH_DATE                         0.170716   0.252461    0.676 0.498910
+FEATURE_BIRTH_YEAR                        -0.163141   0.252366   -0.646 0.517990
+FEATURE_AGE                                      NA         NA       NA       NA
+FEATURE_HEIGHT                            -0.025465   0.006065   -4.199 2.68e-05 ***
+FEATURE_ZIP                                0.007440   0.003151    2.361 0.018226 *
+FEATURE_SMOKING_PACKS_A_DAY                0.142799   0.003489   40.924  < 2e-16 ***
+FEATURE_ACTIVITY_LEVEL                    -0.159859   0.005119  -31.229  < 2e-16 ***
+FEATURE_BLOOD_TYPE                         0.002355   0.003152    0.747 0.454833
+FEATURE_AVG_SLEEP_TIME                    -0.096168   0.021956   -4.380 1.19e-05 ***
+AVG_SLEEP_TIME                                   NA         NA       NA       NA
+FEATURE_COMMUTING_DISTANCE                -0.001117   0.010782   -0.104 0.917513
+FEATURE_DRINKS_ALCOHOL                     0.132488   0.004124   32.128  < 2e-16 ***
+FEATURE_BMI                                0.021055   0.005268    3.997 6.42e-05 ***
+FEATURE_SLEEP_BY_AGE                       0.010724   0.005561    1.928 0.053809 .
+FEATURE_ACTIVITY_LVL_COMMUTING_DIS_BY_AGE  0.007937   0.005803    1.368 0.171429
+FEATURE_BMI_SMOKING_BY_AGE                -0.006506   0.003637   -1.789 0.073649 .
+FEATURE_COMMUTING_DRUNK_AGE               -0.010861   0.009968   -1.090 0.275920
+FEATURE_SLEEP_POS_OFFSET_BY_AGE                  NA         NA       NA       NA
+FEATURE_SLEEP_NEG_OFFSET_BY_AGE           -0.046560   0.016857   -2.762 0.005744 **
+FEATURE_SLEEP_OFFSET_BY_AGE_FROM_MEAN     -0.012106   0.003511   -3.448 0.000564 ***
+FEATURE_LN_ACTIVITY_SLEEP_BMI              0.105372   0.022907    4.600 4.22e-06 ***
+FEATURE_LN_ACTIVITY_SLEEP                 -0.081531   0.014646   -5.567 2.60e-08 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 597662  on 499999  degrees of freedom
+Residual deviance: 591210  on 499979  degrees of freedom
+AIC: 591252
+
+Number of Fisher Scoring iterations: 4
+
+>
+> pred <- predict(glm_fit, newdata=validation_sample)
+Warning message:
+In predict.lm(object, newdata, se.fit, scale = 1, type = ifelse(type ==  :
+  Vorhersage durch Fit ohne vollen Rang mag täuschen
+> misClasificError <- mean(pred != validation_sample$SICK)
+> print(paste('Accuracy',1-misClasificError))
+[1] "Accuracy 0.714244"
+>
+>
+> glm.fitted <- fitted(glm_fit)
+> #print(glm.fitted)
+>
+> library(mlbench)
+> # estimate variable importance
+> importance <- varImp(glm_fit, scale=FALSE)
+> # summarize importance
+> print(importance)
+glm variable importance
+
+                                          Overall
+FEATURE_SMOKING_PACKS_A_DAY               40.9240
+FEATURE_DRINKS_ALCOHOL                    32.1280
+FEATURE_ACTIVITY_LEVEL                    31.2290
+FEATURE_LN_ACTIVITY_SLEEP                  5.5667
+FEATURE_LN_ACTIVITY_SLEEP_BMI              4.6001
+FEATURE_AVG_SLEEP_TIME                     4.3801
+FEATURE_HEIGHT                             4.1987
+FEATURE_BMI                                3.9967
+FEATURE_SLEEP_OFFSET_BY_AGE_FROM_MEAN      3.4482
+FEATURE_SLEEP_NEG_OFFSET_BY_AGE            2.7621
+FEATURE_ZIP                                2.3610
+FEATURE_SLEEP_BY_AGE                       1.9284
+FEATURE_BMI_SMOKING_BY_AGE                 1.7888
+FEATURE_GENDER                             1.3945
+FEATURE_ACTIVITY_LVL_COMMUTING_DIS_BY_AGE  1.3676
+FEATURE_COMMUTING_DRUNK_AGE                1.0895
+FEATURE_BLOOD_TYPE                         0.7474
+FEATURE_BIRTH_DATE                         0.6762
+FEATURE_BIRTH_YEAR                         0.6464
+FEATURE_COMMUTING_DISTANCE                 0.1036
+> # plot importance
+> plot(importance)

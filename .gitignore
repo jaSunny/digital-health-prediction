@@ -1,0 +1,12 @@
+nodejs/node_modules/
+nodejs/db_conf.json
+
+data/html/
+R/config.ini
+*.csv
+*.pdf
+*.rar
+R/jani_*
+/*lock file*/
+*.csv#
+*.html

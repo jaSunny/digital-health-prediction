@@ -1,0 +1,77 @@
+<PMML version="4.0" xmlns="http://www.dmg.org/PMML-4_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+<Header copyright="SAP" >
+<Application name="PAL" version="1.0" />
+</Header>
+<DataDictionary numberOfFields="19" >
+<DataField name="FEATURE_GENDER" optype="categorical" dataType="integer" >
+<Value value="1" />
+<Value value="2" />
+</DataField>
+<DataField name="FEATURE_AGE" optype="continuous" dataType="integer" />
+<DataField name="FEATURE_HEIGHT" optype="continuous" dataType="integer" />
+<DataField name="FEATURE_ZIP" optype="continuous" dataType="integer" />
+<DataField name="FEATURE_SMOKING_PACKS_A_DAY" optype="continuous" dataType="integer" />
+<DataField name="FEATURE_ACTIVITY_LEVEL" optype="continuous" dataType="integer" />
+<DataField name="FEATURE_BLOOD_TYPE" optype="continuous" dataType="integer" />
+<DataField name="FEATURE_AVG_SLEEP_TIME" optype="continuous" dataType="integer" />
+<DataField name="ROUND_AVG_SLEEP_TIME" optype="continuous" dataType="integer" />
+<DataField name="FEATURE_COMMUTING_DISTANCE" optype="continuous" dataType="integer" />
+<DataField name="FEATURE_DRINKS_ALCOHOL" optype="continuous" dataType="integer" />
+<DataField name="FEATURE_BMI" optype="continuous" dataType="integer" />
+<DataField name="FEATURE_SLEEP_BY_AGE" optype="continuous" dataType="integer" />
+<DataField name="FEATURE_ACTIVITY_LVL_COMMUTING_DIS_BY_AGE" optype="continuous" dataType="integer" />
+<DataField name="FEATURE_BMI_SMOKING_BY_AGE" optype="continuous" dataType="integer" />
+<DataField name="FEATURE_COMMUTING_DRUNK_AGE" optype="continuous" dataType="integer" />
+<DataField name="FEATURE_SLEEP_NEG_OFFSET_BY_AGE" optype="continuous" dataType="integer" />
+<DataField name="FEATURE_SLEEP_OFFSET_BY_AGE_FROM_MEAN" optype="continuous" dataType="integer" />
+<DataField name="SICK" optype="continuous" dataType="integer" />
+</DataDictionary>
+<RegressionModel modelName="Instance for regression" functionName="regression" algorithmName="LogisticRegression" targetFieldName="SICK" >
+<MiningSchema>
+<MiningField name="FEATURE_GENDER" usageType="active" />
+<MiningField name="FEATURE_AGE" usageType="active" />
+<MiningField name="FEATURE_HEIGHT" usageType="active" />
+<MiningField name="FEATURE_ZIP" usageType="active" />
+<MiningField name="FEATURE_SMOKING_PACKS_A_DAY" usageType="active" />
+<MiningField name="FEATURE_ACTIVITY_LEVEL" usageType="active" />
+<MiningField name="FEATURE_BLOOD_TYPE" usageType="active" />
+<MiningField name="FEATURE_AVG_SLEEP_TIME" usageType="active" />
+<MiningField name="ROUND_AVG_SLEEP_TIME" usageType="active" />
+<MiningField name="FEATURE_COMMUTING_DISTANCE" usageType="active" />
+<MiningField name="FEATURE_DRINKS_ALCOHOL" usageType="active" />
+<MiningField name="FEATURE_BMI" usageType="active" />
+<MiningField name="FEATURE_SLEEP_BY_AGE" usageType="active" />
+<MiningField name="FEATURE_ACTIVITY_LVL_COMMUTING_DIS_BY_AGE" usageType="active" />
+<MiningField name="FEATURE_BMI_SMOKING_BY_AGE" usageType="active" />
+<MiningField name="FEATURE_COMMUTING_DRUNK_AGE" usageType="active" />
+<MiningField name="FEATURE_SLEEP_NEG_OFFSET_BY_AGE" usageType="active" />
+<MiningField name="FEATURE_SLEEP_OFFSET_BY_AGE_FROM_MEAN" usageType="active" />
+<MiningField name="FEATURE_ACTIVITY_SLEEP" usageType="active" />
+<MiningField name="FEATURE_BIRTH_YEAR" usageType="active" />
+<MiningField name="SICK" usageType="predicted" />
+</MiningSchema>
+<RegressionTable targetCategory="0" intercept="0">
+<NumericPredictor name="FEATURE_GENDER" exponent="1" coefficient="0.0002983658"/>
+<NumericPredictor name="FEATURE_AGE" exponent="1" coefficient="0"/>
+<NumericPredictor name="FEATURE_HEIGHT" exponent="1" coefficient="-0.0325444745"/>
+<NumericPredictor name="FEATURE_ZIP" exponent="1" coefficient="0.0075162728"/>
+<NumericPredictor name="FEATURE_SMOKING_PACKS_A_DAY" exponent="1" coefficient="0.1431854751"/>
+<NumericPredictor name="FEATURE_ACTIVITY_LEVEL" exponent="1" coefficient="-0.1724234390"/>
+<NumericPredictor name="FEATURE_BLOOD_TYPE" exponent="1" coefficient="0.0007347417"/>
+<NumericPredictor name="FEATURE_AVG_SLEEP_TIME" exponent="1" coefficient="-0.0135951595"/>
+<NumericPredictor name="ROUND_AVG_SLEEP_TIME" exponent="1" coefficient="0.0028183342"/>
+<NumericPredictor name="FEATURE_COMMUTING_DISTANCE" exponent="1" coefficient="-0.0026212883"/>
+<NumericPredictor name="FEATURE_DRINKS_ALCOHOL" exponent="1" coefficient="0.1289539209"/>
+<NumericPredictor name="FEATURE_BMI" exponent="1" coefficient="0.0289304590"/>
+<NumericPredictor name="FEATURE_SLEEP_BY_AGE" exponent="1" coefficient="0.0078856841"/>
+<NumericPredictor name="FEATURE_ACTIVITY_LVL_COMMUTING_DIS_BY_AGE" exponent="1" coefficient="0.0073372068"/>
+<NumericPredictor name="FEATURE_BMI_SMOKING_BY_AGE" exponent="1" coefficient="-0.0042415888"/>
+<NumericPredictor name="FEATURE_COMMUTING_DRUNK_AGE" exponent="1" coefficient="-0.0063821843"/>
+<NumericPredictor name="FEATURE_SLEEP_NEG_OFFSET_BY_AGE" exponent="1" coefficient="-0.0150817101"/>
+<NumericPredictor name="FEATURE_SLEEP_OFFSET_BY_AGE_FROM_MEAN" exponent="1" coefficient="-0.0054016641"/>
+<NumericPredictor name="FEATURE_ACTIVITY_SLEEP" exponent="1" coefficient="0.0076854684"/>
+<NumericPredictor name="FEATURE_BIRTH_YEAR" exponent="1" coefficient="-0.0032428840"/>
+</RegressionTable>
+<RegressionTable targetCategory="1" intercept="0"/>
+</RegressionModel>
+</PMML>

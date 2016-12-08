@@ -1,0 +1,36 @@
+Call:
+NULL
+
+Deviance Residuals:
+    Min       1Q   Median       3Q      Max
+-1.3080  -0.8459  -0.7896   1.4350   2.1408
+
+Coefficients: (1 not defined because of singularities)
+                             Estimate Std. Error z value Pr(>|z|)
+(Intercept)                 -0.903223   0.009975 -90.544   <2e-16 ***
+FEATURE_GENDER               0.003558   0.009933   0.358   0.7202
+FEATURE_BIRTH_DATE          -0.123051   0.798775  -0.154   0.8776
+FEATURE_BIRTH_YEAR           0.168498   0.798509   0.211   0.8329
+FEATURE_AGE                        NA         NA      NA       NA
+FEATURE_HEIGHT              -0.023396   0.016765  -1.396   0.1628
+FEATURE_ZIP                  0.008697   0.009903   0.878   0.3799
+FEATURE_SMOKING_PACKS_A_DAY  0.149008   0.011031  13.508   <2e-16 ***
+FEATURE_ACTIVITY_LEVEL      -0.176322   0.013339 -13.219   <2e-16 ***
+FEATURE_BLOOD_TYPE           0.015517   0.009893   1.568   0.1168
+FEATURE_AVG_SLEEP_TIME      -0.039925   0.026153  -1.527   0.1269
+FEATURE_COMMUTING_DISTANCE  -0.012557   0.014673  -0.856   0.3921
+FEATURE_DRINKS_ALCOHOL       0.127534   0.012043  10.590   <2e-16 ***
+FEATURE_BMI                  0.028784   0.013196   2.181   0.0292 *
+FEATURE_SLEEP_BY_AGE         0.014679   0.017236   0.852   0.3944
+FEATURE_BMI_SMOKING_BY_AGE   0.017994   0.016888   1.065   0.2867
+FEATURE_COMMUTING_DRUNK_AGE -0.009246   0.011394  -0.812   0.4171
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 60336  on 49999  degrees of freedom
+Residual deviance: 59677  on 49984  degrees of freedom
+AIC: 59709
+
+Number of Fisher Scoring iterations: 4
